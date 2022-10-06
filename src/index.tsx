@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import cn from 'classnames';
-
+import clsx from 'clsx';
+import memoize from 'memoize-one';
 import {
 	computeLineInformation,
 	LineInformation,
@@ -13,11 +13,6 @@ import computeStyles, {
 	ReactDiffViewerStylesOverride,
 	ReactDiffViewerStyles,
 } from './styles';
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const m = require('memoize-one');
-
-const memoize = m.default || m;
 
 export enum LineNumberPrefix {
 	LEFT = 'L',
@@ -186,10 +181,11 @@ class DiffViewer extends React.Component<
 				return (
 					<span
 						key={i}
-						className={cn(this.styles.wordDiff, {
+						className={clsx(this.styles.wordDiff, {
 							[this.styles.wordAdded]: wordDiff.type === DiffType.ADDED,
 							[this.styles.wordRemoved]: wordDiff.type === DiffType.REMOVED,
 						})}>
+						{/* @ts-ignore */}
 						{renderer ? renderer(wordDiff.value as string) : wordDiff.value}
 					</span>
 				);
@@ -241,7 +237,7 @@ class DiffViewer extends React.Component<
 						onClick={
 							lineNumber && this.onLineNumberClickProxy(lineNumberTemplate)
 						}
-						className={cn(this.styles.gutter, {
+						className={clsx(this.styles.gutter, {
 							[this.styles.emptyGutter]: !lineNumber,
 							[this.styles.diffAdded]: added,
 							[this.styles.diffRemoved]: removed,
@@ -256,7 +252,7 @@ class DiffViewer extends React.Component<
 							additionalLineNumber &&
 							this.onLineNumberClickProxy(additionalLineNumberTemplate)
 						}
-						className={cn(this.styles.gutter, {
+						className={clsx(this.styles.gutter, {
 							[this.styles.emptyGutter]: !additionalLineNumber,
 							[this.styles.diffAdded]: added,
 							[this.styles.diffRemoved]: removed,
@@ -266,7 +262,7 @@ class DiffViewer extends React.Component<
 					</td>
 				)}
 				<td
-					className={cn(this.styles.marker, {
+					className={clsx(this.styles.marker, {
 						[this.styles.emptyLine]: !content,
 						[this.styles.diffAdded]: added,
 						[this.styles.diffRemoved]: removed,
@@ -278,7 +274,7 @@ class DiffViewer extends React.Component<
 					</pre>
 				</td>
 				<td
-					className={cn(this.styles.content, {
+					className={clsx(this.styles.content, {
 						[this.styles.emptyLine]: !content,
 						[this.styles.diffAdded]: added,
 						[this.styles.diffRemoved]: removed,
@@ -440,7 +436,7 @@ class DiffViewer extends React.Component<
 				className={this.styles.codeFold}>
 				{!hideLineNumbers && <td className={this.styles.codeFoldGutter} />}
 				<td
-					className={cn({
+					className={clsx({
 						[this.styles.codeFoldGutter]: isUnifiedViewWithoutLineNumbers,
 					})}
 				/>
@@ -577,7 +573,7 @@ class DiffViewer extends React.Component<
 
 		return (
 			<table
-				className={cn(this.styles.diffContainer, {
+				className={clsx(this.styles.diffContainer, {
 					[this.styles.splitView]: splitView,
 				})}>
 				<tbody>

@@ -3,17 +3,22 @@
     "experimentalDecorators": true,
     "jsx": "react",
     "module": "commonjs",
+    "skipLibCheck": true,
     "moduleResolution": "node",
-    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": false,
     "target": "es5",
     "declaration": true,
     "downlevelIteration": true,
+    "allowJs": true,
     "lib": ["es2017", "dom"],
     "types": [
       "mocha",
       "node"
     ]
   },
-  "include": ["./src/*", "enzyme.js"],
+  "include": ["./src/*"],
   "exclude": ["node_modules"],
 }

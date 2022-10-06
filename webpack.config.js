@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Css = require('mini-css-extract-plugin');
-const FavIconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -17,7 +16,9 @@ module.exports = {
     filename: '[name].js',
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'examples/dist'),
+    static: {
+      directory: path.resolve(__dirname, 'examples/dist'),
+    },
     port: 8000,
     hot: true,
   },
@@ -54,7 +55,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './examples/src/index.ejs',
     }),
-    new FavIconsWebpackPlugin('./logo-standalone.png'),
     new Css({
       filename: 'main.css',
     }),
