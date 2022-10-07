@@ -12,23 +12,23 @@ describe('Testing compute lines utils', (): void => {
     `;
 
     expect(computeLineInformation(oldCode, newCode))
-      .toMatchObject({
-        lineInformation: [
-          {
-            left: {
-              lineNumber: 1,
-              type: 0,
-              value: 'test',
-            },
-            right: {
-              lineNumber: 1,
-              type: 0,
-              value: 'test',
-            },
+    .toMatchObject({
+      lineInformation: [
+        {
+          left: {
+            lineNumber: 1,
+            type: 0,
+            value: 'test',
           },
-        ],
-        diffLines: [],
-      });
+          right: {
+            lineNumber: 1,
+            type: 0,
+            value: 'test',
+          },
+        },
+      ],
+      diffLines: [],
+    });
   });
 
   it('Should identify line addition', (): void => {
@@ -37,31 +37,31 @@ describe('Testing compute lines utils', (): void => {
     newLine`;
 
     expect(computeLineInformation(oldCode, newCode))
-      .toMatchObject({
-        lineInformation: [
-          {
-            right: {
-              lineNumber: 1,
-              type: 0,
-              value: 'test',
-            },
-            left: {
-              lineNumber: 1,
-              type: 0,
-              value: 'test',
-            },
+    .toMatchObject({
+      lineInformation: [
+        {
+          right: {
+            lineNumber: 1,
+            type: 0,
+            value: 'test',
           },
-          {
-            right: {
-              lineNumber: 2,
-              type: 1,
-              value: '    newLine',
-            },
-            left: {},
+          left: {
+            lineNumber: 1,
+            type: 0,
+            value: 'test',
           },
-        ],
-        diffLines: [1],
-      });
+        },
+        {
+          right: {
+            lineNumber: 2,
+            type: 1,
+            value: '    newLine',
+          },
+          left: {},
+        },
+      ],
+      diffLines: [1],
+    });
   });
 
   it('Should identify line deletion', (): void => {
@@ -70,31 +70,31 @@ describe('Testing compute lines utils', (): void => {
     const newCode = 'test';
 
     expect(computeLineInformation(oldCode, newCode))
-      .toMatchObject({
-        lineInformation: [
-          {
-            right: {
-              lineNumber: 1,
-              type: 0,
-              value: 'test',
-            },
-            left: {
-              lineNumber: 1,
-              type: 0,
-              value: 'test',
-            },
+    .toMatchObject({
+      lineInformation: [
+        {
+          right: {
+            lineNumber: 1,
+            type: 0,
+            value: 'test',
           },
-          {
-            right: {},
-            left: {
-              lineNumber: 2,
-              type: 2,
-              value: '    oldLine',
-            },
+          left: {
+            lineNumber: 1,
+            type: 0,
+            value: 'test',
           },
-        ],
-        diffLines: [1],
-      });
+        },
+        {
+          right: {},
+          left: {
+            lineNumber: 2,
+            type: 2,
+            value: '    oldLine',
+          },
+        },
+      ],
+      diffLines: [1],
+    });
   });
 
   it('Should identify line modification', (): void => {
@@ -104,35 +104,35 @@ describe('Testing compute lines utils', (): void => {
     newLine`;
 
     expect(computeLineInformation(oldCode, newCode, true))
-      .toMatchObject({
-        lineInformation: [
-          {
-            right: {
-              lineNumber: 1,
-              type: 0,
-              value: 'test',
-            },
-            left: {
-              lineNumber: 1,
-              type: 0,
-              value: 'test',
-            },
+    .toMatchObject({
+      lineInformation: [
+        {
+          right: {
+            lineNumber: 1,
+            type: 0,
+            value: 'test',
           },
-          {
-            right: {
-              lineNumber: 2,
-              type: 1,
-              value: '    newLine',
-            },
-            left: {
-              lineNumber: 2,
-              type: 2,
-              value: '    oldLine',
-            },
+          left: {
+            lineNumber: 1,
+            type: 0,
+            value: 'test',
           },
-        ],
-        diffLines: [1],
-      });
+        },
+        {
+          right: {
+            lineNumber: 2,
+            type: 1,
+            value: '    newLine',
+          },
+          left: {
+            lineNumber: 2,
+            type: 2,
+            value: '    oldLine',
+          },
+        },
+      ],
+      diffLines: [1],
+    });
   });
 
   it('Should identify word diff', (): void => {
@@ -142,61 +142,61 @@ describe('Testing compute lines utils', (): void => {
     newLine`;
 
     expect(computeLineInformation(oldCode, newCode))
-      .toMatchObject({
-        lineInformation: [
-          {
-            right: {
-              lineNumber: 1,
-              type: 0,
-              value: 'test',
-            },
-            left: {
-              lineNumber: 1,
-              type: 0,
-              value: 'test',
-            },
+    .toMatchObject({
+      lineInformation: [
+        {
+          right: {
+            lineNumber: 1,
+            type: 0,
+            value: 'test',
           },
-          {
-            right: {
-              lineNumber: 2,
-              type: 1,
-              value: [
-                {
-                  type: 0,
-                  value: '    ',
-                },
-                {
-                  type: 1,
-                  value: 'new',
-                },
-                {
-                  type: 0,
-                  value: 'Line',
-                },
-              ],
-            },
-            left: {
-              lineNumber: 2,
-              type: 2,
-              value: [
-                {
-                  type: 0,
-                  value: '    ',
-                },
-                {
-                  type: 2,
-                  value: 'old',
-                },
-                {
-                  type: 0,
-                  value: 'Line',
-                },
-              ],
-            },
+          left: {
+            lineNumber: 1,
+            type: 0,
+            value: 'test',
           },
-        ],
-        diffLines: [1],
-      });
+        },
+        {
+          right: {
+            lineNumber: 2,
+            type: 1,
+            value: [
+              {
+                type: 0,
+                value: '    ',
+              },
+              {
+                type: 1,
+                value: 'new',
+              },
+              {
+                type: 0,
+                value: 'Line',
+              },
+            ],
+          },
+          left: {
+            lineNumber: 2,
+            type: 2,
+            value: [
+              {
+                type: 0,
+                value: '    ',
+              },
+              {
+                type: 2,
+                value: 'old',
+              },
+              {
+                type: 0,
+                value: 'Line',
+              },
+            ],
+          },
+        },
+      ],
+      diffLines: [1],
+    });
   });
 
   it('Should call "diffChars" jsDiff method when compareMethod is not provided', (): void => {
@@ -205,76 +205,76 @@ describe('Testing compute lines utils', (): void => {
 Also this info`;
 
     expect(computeLineInformation(oldCode, newCode))
-      .toMatchObject({
-        lineInformation: [
-          {
-            right: {
-              lineNumber: 1,
-              type: 1,
-              value: [
-                {
-                  type: 1,
-                  value: 'My Updat',
-                },
-                {
-                  type: 0,
-                  value: 'e',
-                },
-                {
-                  type: 1,
-                  value: 'd',
-                },
-                {
-                  type: 0,
-                  value: ' ',
-                },
-                {
-                  type: 1,
-                  value: 'Name',
-                },
-              ],
-            },
-            left: {
-              lineNumber: 1,
-              type: 2,
-              value: [
-                {
-                  type: 2,
-                  value: 'H',
-                },
-                {
-                  type: 0,
-                  value: 'e',
-                },
-                {
-                  type: 2,
-                  value: 'llo',
-                },
-                {
-                  type: 0,
-                  value: ' ',
-                },
-                {
-                  type: 2,
-                  value: 'World',
-                },
-              ],
-            },
+    .toMatchObject({
+      lineInformation: [
+        {
+          right: {
+            lineNumber: 1,
+            type: 1,
+            value: [
+              {
+                type: 1,
+                value: 'My Updat',
+              },
+              {
+                type: 0,
+                value: 'e',
+              },
+              {
+                type: 1,
+                value: 'd',
+              },
+              {
+                type: 0,
+                value: ' ',
+              },
+              {
+                type: 1,
+                value: 'Name',
+              },
+            ],
           },
-          {
-            right: {
-              lineNumber: 2,
-              type: 1,
-              value: 'Also this info',
-            },
-            left: {},
+          left: {
+            lineNumber: 1,
+            type: 2,
+            value: [
+              {
+                type: 2,
+                value: 'H',
+              },
+              {
+                type: 0,
+                value: 'e',
+              },
+              {
+                type: 2,
+                value: 'llo',
+              },
+              {
+                type: 0,
+                value: ' ',
+              },
+              {
+                type: 2,
+                value: 'World',
+              },
+            ],
           },
-        ],
-        diffLines: [
-          0,
-          2,
-        ],
-      });
+        },
+        {
+          right: {
+            lineNumber: 2,
+            type: 1,
+            value: 'Also this info',
+          },
+          left: {},
+        },
+      ],
+      diffLines: [
+        0,
+        2,
+      ],
+    });
   });
 
   it('Should call "diffWords" jsDiff method when a compareMethod IS provided', (): void => {
@@ -283,60 +283,60 @@ Also this info`;
 Also this info`;
 
     expect(computeLineInformation(oldCode, newCode, false, DiffMethod.WORDS))
-      .toMatchObject({
-        lineInformation: [
-          {
-            right: {
-              lineNumber: 1,
-              type: 1,
-              value: [
-                {
-                  type: 1,
-                  value: 'My',
-                },
-                {
-                  type: 0,
-                  value: ' ',
-                },
-                {
-                  type: 1,
-                  value: 'Updated Name',
-                },
-              ],
-            },
-            left: {
-              lineNumber: 1,
-              type: 2,
-              value: [
-                {
-                  type: 2,
-                  value: 'Hello',
-                },
-                {
-                  type: 0,
-                  value: ' ',
-                },
-                {
-                  type: 2,
-                  value: 'World',
-                },
-              ],
-            },
+    .toMatchObject({
+      lineInformation: [
+        {
+          right: {
+            lineNumber: 1,
+            type: 1,
+            value: [
+              {
+                type: 1,
+                value: 'My',
+              },
+              {
+                type: 0,
+                value: ' ',
+              },
+              {
+                type: 1,
+                value: 'Updated Name',
+              },
+            ],
           },
-          {
-            right: {
-              lineNumber: 2,
-              type: 1,
-              value: 'Also this info',
-            },
-            left: {},
+          left: {
+            lineNumber: 1,
+            type: 2,
+            value: [
+              {
+                type: 2,
+                value: 'Hello',
+              },
+              {
+                type: 0,
+                value: ' ',
+              },
+              {
+                type: 2,
+                value: 'World',
+              },
+            ],
           },
-        ],
-        diffLines: [
-          0,
-          2,
-        ],
-      });
+        },
+        {
+          right: {
+            lineNumber: 2,
+            type: 1,
+            value: 'Also this info',
+          },
+          left: {},
+        },
+      ],
+      diffLines: [
+        0,
+        2,
+      ],
+    });
   });
 
   it('Should not call jsDiff method and not diff text when disableWordDiff is true', (): void => {
@@ -345,34 +345,34 @@ Also this info`;
 Also this info`;
 
     expect(computeLineInformation(oldCode, newCode, true))
-      .toMatchObject({
-        lineInformation: [
-          {
-            right: {
-              lineNumber: 1,
-              type: 1,
-              value: 'My Updated Name',
-            },
-            left: {
-              lineNumber: 1,
-              type: 2,
-              value: 'Hello World',
-            },
+    .toMatchObject({
+      lineInformation: [
+        {
+          right: {
+            lineNumber: 1,
+            type: 1,
+            value: 'My Updated Name',
           },
-          {
-            right: {
-              lineNumber: 2,
-              type: 1,
-              value: 'Also this info',
-            },
-            left: {},
+          left: {
+            lineNumber: 1,
+            type: 2,
+            value: 'Hello World',
           },
-        ],
-        diffLines: [
-          0,
-          2,
-        ],
-      });
+        },
+        {
+          right: {
+            lineNumber: 2,
+            type: 1,
+            value: 'Also this info',
+          },
+          left: {},
+        },
+      ],
+      diffLines: [
+        0,
+        2,
+      ],
+    });
   });
 
   it('Should start line counting from offset', (): void => {
@@ -381,33 +381,33 @@ Also this info`;
 Also this info`;
 
     expect(computeLineInformation(oldCode, newCode, true, DiffMethod.WORDS, 5))
-      .toMatchObject({
-        lineInformation: [
-          {
-            right: {
-              lineNumber: 6,
-              type: 1,
-              value: 'My Updated Name',
-            },
-            left: {
-              lineNumber: 6,
-              type: 2,
-              value: 'Hello World',
-            },
+    .toMatchObject({
+      lineInformation: [
+        {
+          right: {
+            lineNumber: 6,
+            type: 1,
+            value: 'My Updated Name',
           },
-          {
-            right: {
-              lineNumber: 7,
-              type: 1,
-              value: 'Also this info',
-            },
-            left: {},
+          left: {
+            lineNumber: 6,
+            type: 2,
+            value: 'Hello World',
           },
-        ],
-        diffLines: [
-          0,
-          2,
-        ],
-      });
+        },
+        {
+          right: {
+            lineNumber: 7,
+            type: 1,
+            value: 'Also this info',
+          },
+          left: {},
+        },
+      ],
+      diffLines: [
+        0,
+        2,
+      ],
+    });
   });
 });

@@ -1,4 +1,3 @@
-
 <p align="center">
   <img src='https://i.ibb.co/DKrGhVQ/Frame-1-1.png' width="100%" alt='React Diff Viewer' />
 </p>
@@ -8,26 +7,26 @@
 [![npm version](https://badge.fury.io/js/react-diff-viewer.svg)](https://badge.fury.io/js/react-diff-viewer)
 [![GitHub license](https://img.shields.io/github/license/praneshr/react-diff-viewer.svg)](https://github.com/praneshr/react-diff-viewer/blob/master/LICENSE)
 
-A simple and beautiful text diff viewer component made with [Diff](https://github.com/kpdecker/jsdiff) and [React](https://reactjs.org).
+A simple and beautiful text diff viewer component made
+with [Diff](https://github.com/kpdecker/jsdiff) and [React](https://reactjs.org).
 
-Inspired from Github diff viewer, it includes features like split view, inline view, word diff, line highlight and more. It is highly customizable and it supports almost all languages.
-
-Check [here](https://github.com/praneshr/react-diff-viewer/tree/v2.0) for v2.0
+Inspired from Github diff viewer, it includes features like split view, inline view, word diff, line
+highlight and more. It is highly customizable and it supports almost all languages.
 
 ## Install
 
 ```bash
-yarn add react-diff-viewer
+yarn add @bunchhieng/react-diff-viewer
 
 # or
 
-npm i react-diff-viewer
+npm i @bunchhieng/react-diff-viewer
 ```
 
 ## Usage
 
 ```javascript
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import ReactDiffViewer from 'react-diff-viewer';
 
 const oldCode = `
@@ -53,7 +52,7 @@ if(a === 10) {
 class Diff extends PureComponent {
   render = () => {
     return (
-      <ReactDiffViewer oldValue={oldCode} newValue={newCode} splitView={true} />
+      <ReactDiffViewer oldValue={oldCode} newValue={newCode} splitView={true}/>
     );
   };
 }
@@ -83,11 +82,15 @@ class Diff extends PureComponent {
 
 ## Instance Methods
 
-`resetCodeBlocks()` - Resets the expanded code blocks to it's initial state. Return `true` on successful reset and `false` during unsuccessful reset.
+`resetCodeBlocks()` - Resets the expanded code blocks to it's initial state. Return `true` on
+successful reset and `false` during unsuccessful reset.
 
 ## Syntax Highlighting
 
-Syntax highlighting is a bit tricky when combined with diff. Here, React Diff Viewer provides a simple render prop API to handle syntax highlighting. Use `renderContent(content: string) => JSX.Element` and your favorite syntax highlighting library to achieve this.
+Syntax highlighting is a bit tricky when combined with diff. Here, React Diff Viewer provides a
+simple render prop API to handle syntax highlighting.
+Use `renderContent(content: string) => JSX.Element` and your favorite syntax highlighting library to
+achieve this.
 
 An example using [Prism JS](https://prismjs.com)
 
@@ -102,7 +105,7 @@ An example using [Prism JS](https://prismjs.com)
 ```
 
 ```javascript
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import ReactDiffViewer from 'react-diff-viewer';
 
 const oldCode = `
@@ -128,7 +131,7 @@ if(a === 10) {
 class Diff extends PureComponent {
   highlightSyntax = str => (
     <pre
-      style={{ display: 'inline' }}
+      style={{display: 'inline'}}
       dangerouslySetInnerHTML={{
         __html: Prism.highlight(str, Prism.languages.javascript),
       }}
@@ -150,7 +153,9 @@ class Diff extends PureComponent {
 
 ## Text block diff comparison
 
-Different styles of text block diffing are possible by using the enums corresponding to variou JsDiff methods ([learn more](https://github.com/kpdecker/jsdiff/tree/v4.0.1#api)). The supported methods are as follows.
+Different styles of text block diffing are possible by using the enums corresponding to variou
+JsDiff methods ([learn more](https://github.com/kpdecker/jsdiff/tree/v4.0.1#api)). The supported
+methods are as follows.
 
 ```javascript
 enum DiffMethod {
@@ -165,8 +170,8 @@ enum DiffMethod {
 ```
 
 ```javascript
-import React, { PureComponent } from 'react';
-import ReactDiffViewer, { DiffMethod } from 'react-diff-viewer';
+import React, {PureComponent} from 'react';
+import ReactDiffViewer, {DiffMethod} from 'react-diff-viewer';
 
 const oldCode = `
 {
@@ -198,7 +203,9 @@ class Diff extends PureComponent {
 
 ## Overriding Styles
 
-React Diff Viewer uses [emotion](https://emotion.sh/) for styling. It also offers a simple way to override styles and style variables. You can supply different variables for both light and dark themes. Styles will be common for both themes.
+React Diff Viewer uses [emotion](https://emotion.sh/) for styling. It also offers a simple way to
+override styles and style variables. You can supply different variables for both light and dark
+themes. Styles will be common for both themes.
 
 Below are the default style variables and style object keys.
 
@@ -261,35 +268,36 @@ const defaultStyles = {
       diffViewerTitleBorderColor: '#353846',
     }
   },
-  diffContainer?: {}, // style object
-  diffRemoved?: {}, // style object
-  diffAdded?: {}, // style object
-  marker?: {}, // style object
-  emptyGutter?: {}, // style object
-  highlightedLine?: {}, // style object
-  lineNumber?: {}, // style object
-  highlightedGutter?: {}, // style object
-  contentText?: {}, // style object
-  gutter?: {}, // style object
-  line?: {}, // style object
-  wordDiff?: {}, // style object
-  wordAdded?: {}, // style object
-  wordRemoved?: {}, // style object
-  codeFoldGutter?: {}, // style object
-  codeFold?: {}, // style object
-  emptyLine?: {}, // style object
-  content?: {}, // style object
-  titleBlock?: {}, // style object
-  splitView?: {}, // style object
+  diffContainer? : {}, // style object
+  diffRemoved? : {}, // style object
+  diffAdded? : {}, // style object
+  marker? : {}, // style object
+  emptyGutter? : {}, // style object
+  highlightedLine? : {}, // style object
+  lineNumber? : {}, // style object
+  highlightedGutter? : {}, // style object
+  contentText? : {}, // style object
+  gutter? : {}, // style object
+  line? : {}, // style object
+  wordDiff? : {}, // style object
+  wordAdded? : {}, // style object
+  wordRemoved? : {}, // style object
+  codeFoldGutter? : {}, // style object
+  codeFold? : {}, // style object
+  emptyLine? : {}, // style object
+  content? : {}, // style object
+  titleBlock? : {}, // style object
+  splitView? : {}, // style object
 }
 ```
 
-To override any style, just pass the new style object to the `styles` prop. New style will be computed using `Object.assign(default, override)`.
+To override any style, just pass the new style object to the `styles` prop. New style will be
+computed using `Object.assign(default, override)`.
 
 For keys other than `variables`, the value can either be an object or string interpolation.
 
 ```javascript
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import ReactDiffViewer from 'react-diff-viewer';
 
 const oldCode = `
@@ -315,7 +323,7 @@ if(a === 10) {
 class Diff extends PureComponent {
   highlightSyntax = str => (
     <span
-      style={{ display: 'inline' }}
+      style={{display: 'inline'}}
       dangerouslySetInnerHTML={{
         __html: Prism.highlight(str, Prism.languages.javascript),
       }}

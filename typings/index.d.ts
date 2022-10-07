@@ -1,8 +1,9 @@
 declare module 'emotion';
 declare module 'create-emotion' {
-    class Interpolation {
+  class Interpolation {
 
-    }
-    export { Interpolation };
+  }
+
+  export { Interpolation };
 }
 declare module 'enzyme';

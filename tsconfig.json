@@ -13,12 +13,19 @@
     "declaration": true,
     "downlevelIteration": true,
     "allowJs": true,
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "types": [
       "mocha",
       "node"
     ]
   },
-  "include": ["./src/*"],
-  "exclude": ["node_modules"],
+  "include": [
+    "./src/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
