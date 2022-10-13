@@ -16,18 +16,18 @@ highlight and more. It is highly customizable and it supports almost all languag
 ## Install
 
 ```bash
-yarn add @bunchhieng/react-diff-viewer
+yarn add @terran-one/react-diff-viewer
 
 # or
 
-npm i @bunchhieng/react-diff-viewer
+npm i @terran-one/react-diff-viewer
 ```
 
 ## Usage
 
 ```javascript
 import React, {PureComponent} from 'react';
-import ReactDiffViewer from 'react-diff-viewer';
+import ReactDiffViewer from '@terran-one/react-diff-viewer';
 
 const oldCode = `
 const a = 10

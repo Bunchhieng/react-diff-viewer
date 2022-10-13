@@ -1,5 +1,5 @@
 {
-  "name": "@bunchhieng/react-diff-viewer",
+  "name": "@terran-one/react-diff-viewer",
   "version": "3.1.2",
   "private": false,
   "description": "A simple and beautiful text diff viewer component made with diff and React",
@@ -27,7 +27,8 @@
     "publish:examples:local": "NODE_ENV=production yarn build:examples && gh-pages -d examples/dist",
     "start:examples": "webpack serve --config webpack.config.js",
     "test": "mocha --require ts-node/register --require enzyme.ts ./test/**",
-    "test:watch": "mocha --require ts-node/register --require enzyme.ts --watch-extensions ts,tsx --watch ./test/**"
+    "test:watch": "mocha --require ts-node/register --require enzyme.ts --watch-extensions ts,tsx --watch ./test/**",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@emotion/css": "^11.10.0",
